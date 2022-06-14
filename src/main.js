@@ -69,26 +69,26 @@ async function getMoviesByCategory(id) {
 }
 
 
-async function getMoviesBySearch(query){
-    const {data} = await api('/search/movie', {
+async function getMoviesBySearch(query) {
+    const { data } = await api('/search/movie', {
         params: {
-             query, 
+            query,
         }
     });
     const results = data.results;
-        renderMovies(genericSection,results);
-}
-
-
-async function getMoviesByTrends(){
-    const {data} = await api('/movie/popular');
-    const  results = data.results;
     renderMovies(genericSection, results);
 }
 
 
-async function getMovieById(movie_id){
-    const {data: movie} = await api('/movie/' + movie_id, {
+async function getMoviesByTrends() {
+    const { data } = await api('/movie/popular');
+    const results = data.results;
+    renderMovies(genericSection, results);
+}
+
+
+async function getMovieById(movie_id) {
+    const { data: movie } = await api('/movie/' + movie_id, {
     });
 
     const movieImgUrl = 'https://image.tmdb.org/t/p/w500' + movie.poster_path
@@ -100,61 +100,15 @@ async function getMovieById(movie_id){
     linear-gradient(
     180deg, rgba(0, 0, 0, 0.35) 19.27%,
      rgba(0, 0, 0, 0) 29.17%), url(${movieImgUrl})`;
-    renderCategoriesList(movieDetailCategoriesList,movie.genres)
+    renderCategoriesList(movieDetailCategoriesList, movie.genres)
     getRelateMovieById(movie_id)
 }
 
 
-async function getRelateMovieById(movie_id){
-    const {data} = await api('/movie/' + movie_id + '/recommendations', {
+async function getRelateMovieById(movie_id) {
+    const { data } = await api('/movie/' + movie_id + '/recommendations', {
     });
-    const  results = data.results;
+    const results = data.results;
 
     renderMovies(relatedMoviesContainer, results)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-getCategoriesPreview();
-getTrendingMoviesPreview();
