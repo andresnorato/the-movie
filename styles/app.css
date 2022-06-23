@@ -286,6 +286,7 @@ button {
 
 .genericList-container .movie-img {
   width: 100%;
+
 }
 
 
@@ -355,6 +356,10 @@ button {
   max-height: 187.5px;
 }
 
+.movie-img {
+  border-radius: 8px;
+  min-height: 175px;
+}
 
 .movie-container--loading {
   background: var(--purple-light-2);
